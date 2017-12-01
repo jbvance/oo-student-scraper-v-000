@@ -6,7 +6,7 @@ class Student
 
   def initialize(student_hash)
     self.name = student_hash[:name]
-    self.location = student_has[:location]
+    self.location = student_hash[:location]
   end
 
   def self.create_from_collection(students_array)
