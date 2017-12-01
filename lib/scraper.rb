@@ -22,7 +22,7 @@ class Scraper
     doc = Nokogiri::HTML(open(profile_url))
     student = {}
     vitals = doc.css(".vitals-container")
-    details = doc.css("div.bio-block")
+    bio_details = doc.css("div.bio-block")
     social_container = vitals.css(".social-icon-container")
     social_container.children.css("a").each do |link|
       url = link.attribute('href').value
@@ -38,6 +38,7 @@ class Scraper
     end
 
     student[:profile_quote] = vitals.css(".vitals-text-container .profile-quote").text
+    student[:bio] = bio_details.css("p").text
 
     binding.pry
 
