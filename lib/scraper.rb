@@ -23,10 +23,9 @@ class Scraper
     student = {}
     vitals = doc.css(".vitals-container")
     social_container = vitals.css(".social-icon-container")
-    binding.pry
     social_container.children.css("a").each do |link|
+      binding.pry
       if link.attribute('href').include?("linkedin")
-        binding.pry
 
         #student[:linkedin] = link.value
       else
