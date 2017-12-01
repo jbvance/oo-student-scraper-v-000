@@ -23,19 +23,22 @@ class Scraper
     student = {}
     vitals = doc.css(".vitals-container")
     social_container = vitals.css(".social-icon-container")
-    social_container.children.css("a").each do |link|
-      binding.pry
-      if link.attribute('href').include?("linkedin")
-
-        #student[:linkedin] = link.value
+    social_container.children.css("a").each do |link|    
+      url = link.attribute('href').value
+      if url.include?("linkedin")
+        student[:linkedin] = url
+      elsif url.include?("github")
+        student[:github] = url
+      elsif url.include?("twitter")
+        student[:twitter] = url
       else
-        #student[:blog] = link.value
+        student[:blog] = url
       end
     end
 
     student[:profile_quote] = vitals.css(".vitals-text-container .profile-quote").text
 
-    #binding.pry
+    binding.pry
 
     return student
   end
