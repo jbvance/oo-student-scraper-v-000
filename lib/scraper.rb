@@ -40,8 +40,6 @@ class Scraper
     student[:profile_quote] = vitals.css(".vitals-text-container .profile-quote").text
     student[:bio] = bio_details.css("p").text
 
-    binding.pry
-
     return student
   end
 
